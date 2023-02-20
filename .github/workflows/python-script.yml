@@ -1,0 +1,19 @@
+name: Run Python Script
+on:
+  pull_request:
+    types: [opened, synchronize]
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Get user input
+        id: input
+        run: |
+          echo "::set-output name=input::$(read -p 'Enter input: ' value && echo $value)"
+      - name: Run Python script
+        env:
+          INPUT_FILE: ${{ github.workspace }}/input.xlsx
+          USER_INPUT: ${{ steps.input.outputs.input }}
+        run: python my_script.py $INPUT_FILE $USER_INPUT
