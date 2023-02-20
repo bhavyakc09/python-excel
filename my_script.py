@@ -5,7 +5,7 @@ import openpyxl
 input_file = sys.argv[1]
 
 # Load the Excel file
-workbook = openpyxl.load_workbook(input_file)
+workbook = openpyxl.load_workbook(input_data.xlsx)
 
 # Get the active worksheet
 worksheet = workbook.active
