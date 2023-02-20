@@ -12,8 +12,11 @@ jobs:
         id: input
         run: |
           echo "::set-output name=input::$(read -p 'Enter input: ' value && echo $value)"
+      - name: Install dependencies
+        run: pip install openpyxl
       - name: Run Python script
         env:
           INPUT_FILE: ${{ github.workspace }}/input.xlsx
           USER_INPUT: ${{ steps.input.outputs.input }}
         run: python my_script.py $INPUT_FILE $USER_INPUT
+
