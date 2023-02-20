@@ -16,7 +16,7 @@ jobs:
         run: pip install openpyxl
       - name: Run Python script
         env:
-          INPUT_FILE: ${{ github.workspace }}/input.xlsx
+          INPUT_FILE: ${{ github.workspace }}/input_data.xlsx
           USER_INPUT: ${{ steps.input.outputs.input }}
         run: python my_script.py $INPUT_FILE $USER_INPUT
 
